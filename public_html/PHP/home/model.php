@@ -14,11 +14,14 @@ Class homeModel{
 		while ($row = mysqli_fetch_array($result)){
 			$noteID = $row[noteID];
 			$i++;
-			$noteData["$noteID"][0] = $row[noteType];		
-			$noteData["$noteID"][1] = $row[noteTitle];
-			$noteData["$noteID"][2] = $row[noteValue];
+			$noteData[$i][0] = $row[noteID];
+			$noteData[$i][1] = $row[parentKey];
+			$noteData[$i][2] = $row[noteType];		
+			$noteData[$i][3] = $row[noteTitle];
+			$noteData[$i][4] = $row[noteValue];
 	}
-	
+	echo "beagle";
+		print_r($noteData[0][0]);
 		return $noteData;
 	}
 	

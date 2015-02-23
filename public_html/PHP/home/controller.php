@@ -1,12 +1,13 @@
 <?php 
-require("model.php")
+require("model.php");
+require("view.php");
 ?>
 
 <?php 
 Class homeController{
 	
 	public $key;
-	public $keyNoteIDS;
+	
 	public $model;
 	public $noteData;
 	function __construct(){
@@ -15,17 +16,15 @@ Class homeController{
 		$this->model = new homeModel();
 		$this->noteData = array();
 		$this->noteData = $this->model->getNoteData($this->key);
-		print_r($this->noteData[1000000000][0]);
-
 		
-			
-		 
-		
-	
-	
-	
-	
 }
+	function viewManager(){
+		return $this->noteData;
+		
+	}
+	
+
+	
 }
 
 ?>

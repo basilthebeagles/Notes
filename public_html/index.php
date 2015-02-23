@@ -1,37 +1,37 @@
 <?php 
 //include "/PHP/index/controller.php";
 require("PHP/index/controller.php");
-echo "0";
+
 $controller = new indexController();
 
-echo "1";
+
 ?>
 <?php 
 
 function login($controller){
 	
-	echo "Mr Thomas";
+	
 	return $controller->login($_POST[key]);
 }
 
 
 
-echo "2";
+
 if(isset($_POST[key]) and $_POST[button] == "login"){
-	echo "2a";
+	
 	if(login($controller)){
 		header( 'Location: http://www.csgofiat.com/home.php' ) ;
 	}else{
-		echo "here";
+		
 		$error = "Sorry, your key was not recognised";
 	}
 }
 if($_POST[button] == "create"){
-	echo "2b";
+	
 	if($statement= $controller->create($_POST[key])){
-		echo "2ba";
+		
 		login($controller);
-		echo "2baa";
+		
 	}elseif($statement == "exists"){
 		$error = "Key allready exists; please choose a different one.";
 		
@@ -41,11 +41,11 @@ if($_POST[button] == "create"){
 	
 }
 
-echo "3";
+
 if($controller->checkLogin()){
 	header( 'Location: http://www.csgofiat.com/home.php' );
 }
-echo "4";
+
 ?>
 
 

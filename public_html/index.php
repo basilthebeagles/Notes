@@ -27,14 +27,18 @@ if(isset($_POST[key]) and $_POST[button] == "login"){
 	}
 }
 if($_POST[button] == "create"){
+	echo "heraaaaa";
 	
-	if($statement= $controller->create($_POST[key])){
+	
+	if($controller->create($_POST[key])){
 		
-		login($controller);
+		if(login($controller)){
+			header( 'Location: http://www.csgofiat.com/home.php' ) ;
+		}
 		
-	}elseif($statement == "exists"){
+	}elseif($controller->create($_POST[key])!= TRUE){
 		$error = "Key allready exists; please choose a different one.";
-		
+		echo "keyexist";
 	}else{
 		$error = "An unknown error occured";
 	}
@@ -45,7 +49,7 @@ if($_POST[button] == "create"){
 if($controller->checkLogin()){
 	header( 'Location: http://www.csgofiat.com/home.php' );
 }
-
+echo $error;
 ?>
 
 

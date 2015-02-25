@@ -9,10 +9,12 @@ Class indexModel{
 		$query = "SELECT * FROM `keys` WHERE privateKey = '$key'";
 		$check = mysqli_query($link, $query);
 		
-		if(mysqli_fetch_array($check)){
-			echo "TRUE";
-			return true;
+		if($asdf = mysqli_fetch_array($check)){
+			if($asdf[0] == $key){
 			
+			echo "TRUE";
+			return TRUE;
+			}
 		}else{
 			return false;
 		}
@@ -24,16 +26,16 @@ Class indexModel{
 	
 	function createNewKey($key){
 		if($this->validateKey($key)){
-			return "exists";
+			return FALSE;
 		}
 		
 		$link = mysqli_connect("localhost", "cl52-adminbaz", "S63Gafa1fa", "cl52-adminbaz");
 		$query = "INSERT INTO `keys` (`privateKey`) VALUES ('$key')";
 		$result = mysqli_query($link, $query); 
 		if($result){
-			return true;	
+			return TRUE;	
 		}else{
-			return false;
+			return 3;
 		}																							
 	}
 }

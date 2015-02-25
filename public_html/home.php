@@ -1,4 +1,5 @@
 <?php 
+echo "a";
 require("PHP/home/controller.php");
 echo 0;
 $controller = new homeController();	
@@ -17,7 +18,7 @@ echo "a";
 	echo "b";
 	?>
 <?php 
-	
+	//a
 
 ?>
 <html>
@@ -32,19 +33,27 @@ echo "a";
 	 table-layout: fixed;
 	}
 	td{
-    word-wrap:break-word
+    word-wrap:break-word;
 }
 
+form{
+	text-align:right;
+margin-bottom: 0cm;
+}
+
+
+	
 	</style>
 </head>
 <body>
-<div style="width:800px; margin:0 auto;">
+<div style="width:800px; margin:0 auto; ">
       
     
-<table style="width:100%">
+<table style="width:100%;" border="0">
  <tr>
  	<th>Title</th>
  	<th>Value</th>
+ 	
  </tr>	
  <?php 
 
@@ -68,13 +77,23 @@ while(count($noteData)>= $id){
  		
  		echo "<td id='noteValue'>";
 		echo $noteData[$i][4];
- 		echo "</td>";		
- 		echo "<form><input type='submit' value='ashjfsa'/></form>";
+		echo "<form id='edit' method='get'><input type='submit' value='Edit' name=''/>
+			<input type='hidden' value='";
+		echo 	$noteData[$i][0];
+		echo	"' name='edit'/></form>";
+		echo "<form id='delete'method='get'><input type='submit' value='Delete' name=''/><input type='hidden' value='";
+		echo 	$noteData[$i][0];
+		echo "' name='delete'/></form>";
+			
+ 		echo "</td>";
+ 		
+ 		
  		
  		
  		
  		echo "</tr>";
- 		echo "</div>";
+ 		
+ 		
  		
  	
  	

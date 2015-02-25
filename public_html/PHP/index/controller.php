@@ -38,15 +38,19 @@ class indexController{
 	
 	function create($key){
 		$model = new indexModel();
-		if($statement = $model->createNewKey($key)){
-			return true;
-		}elseif ($statement=="exists"){
+		
+		echo"here:";
+		echo $statement;		
+		if($model->createNewKey($key)){
+			echo "should not be here";
+			return TRUE;
+		}elseif ($model->createNewKey($key)!=TRUE){
 			
 			
 			//"Key allready exists; please choose a different one.";
-			return "exists";
+			return FALSE;
 		}else{
-			return "error";
+			return 3;
 		}
 	}
 	

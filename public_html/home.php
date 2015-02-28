@@ -1,22 +1,38 @@
 <?php 
-echo "a";
-require("PHP/home/controller.php");
-echo 0;
-$controller = new homeController();	
-$noteData = array();
-$noteData = $controller->viewManager();
-print_r($noteData[0][0]);
-echo "a";	
-?>
-<?php 
 	if(isset($_COOKIE['key'])){
 			
 	}else{
 		header( 'Location: http://www.csgofiat.com' );
 	}
+	
+	
 
 	echo "b";
 	?>
+
+
+<?php 
+echo "a";
+require("PHP/home/controller.php");
+echo 0;
+$controller = new homeController();	
+
+if(isset($_POST[delete])){
+	$controller->deleteNote($_POST[delete]);
+}
+
+if(isset($_POST[noteTitle])){
+	echo "set";
+	$controller->newNote($_POST[noteTitle], $_POST[noteValue]);
+}
+
+$controller->getNoteData();
+$noteData = array();
+$noteData = $controller->viewManager();
+print_r($noteData[0][0]);
+echo "a";	
+?>
+
 <?php 
 	//a
 
@@ -25,6 +41,13 @@ echo "a";
 <head>
 	<title>Notes</title>
 	<style>
+	
+	textarea{
+
+	width: 396px;
+	height:120px;
+}
+	
 	table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -81,7 +104,7 @@ while(count($noteData)>= $id){
 			<input type='hidden' value='";
 		echo 	$noteData[$i][0];
 		echo	"' name='edit'/></form>";
-		echo "<form id='delete'method='post'><input type='submit' value='Delete' name=''/><input type='hidden' value='";
+		echo "<form id='delete' method='post'><input type='submit' value='Delete' name=''/><input type='hidden' value='";
 		echo 	$noteData[$i][0];
 		echo "' name='delete'/></form>";
 			
@@ -98,8 +121,41 @@ while(count($noteData)>= $id){
  	
  	
 }
- 		
- 
+
+
+echo "<tr id='row'>";
+
+echo "<td id='noteTitle'>";
+
+echo "<textarea id='noteTitleTextBox' maxlength='200' name='noteTitle' form='new' >";
+
+
+
+
+echo "</textarea>";
+
+echo "</td>";
+
+echo "<td id='noteValue'>";
+echo "<textarea id='noteValueTextBox' maxlength='200' name='noteValue' form='new' >";
+
+
+
+echo "</textarea>";
+echo "<form id='new' method='post' ><input type='submit'value='Create'/>";
+
+echo "</form>";
+echo "<form id='cancel' action='http://www.csgofiat.com/home.php'><input type='submit' value='Cancel'/></form>";
+
+
+echo "</td>";
+
+
+
+
+
+echo "</tr>";
+
  
  
  ?>

@@ -1,6 +1,6 @@
 <?php 
 require("model.php");
-require("view.php");
+
 ?>
 
 <?php 
@@ -14,10 +14,28 @@ Class homeController{
 		$this->key = $_COOKIE['key'];
 		echo 1;
 		$this->model = new homeModel();
-		$this->noteData = array();
-		$this->noteData = $this->model->getNoteData($this->key);
+		
 		
 }
+
+
+	function newNote($noteTitle, $noteValue){
+		$this->model->newNote($this->key ,$noteTitle, $noteValue);
+	}
+
+
+
+	function getNoteData(){
+		$this->noteData = array();
+		$this->noteData = $this->model->getNoteData($this->key);
+	}	
+	
+	
+	function deleteNote($noteID){
+		$this->model->deleteNote($noteID);
+	}
+	
+
 	function viewManager(){
 		return $this->noteData;
 		

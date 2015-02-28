@@ -1,4 +1,17 @@
 <?php 
+	if(isset($_COOKIE['key'])){
+			
+	}else{
+		header( 'Location: http://www.csgofiat.com' );
+	}
+	
+	
+
+	echo "b";
+	?>
+
+
+<?php 
 echo "0";
 require("PHP/edit/controller.php");
 $noteID = $_POST[edit];
@@ -9,6 +22,7 @@ echo "b";
 if(isset($_POST[noteTitle])){
 	echo "edirt";
 	$controller->updateNote($_POST[edit],$_POST[noteTitle], $_POST[noteValue]);
+	header( 'Location: http://www.csgofiat.com/home.php' );
 }
 
 $note = array();

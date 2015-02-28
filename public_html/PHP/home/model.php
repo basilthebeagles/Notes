@@ -26,6 +26,18 @@ Class homeModel{
 		return $noteData;
 	}
 	
+	function deleteNote($noteID){
+		$link = mysqli_connect("localhost", "cl52-adminbaz", "S63Gafa1fa", "cl52-adminbaz");
+		$query = "DELETE FROM `notes` WHERE `noteID` = $noteID";
+		$result = mysqli_query($link, $query);
+	}
+	
+	function newNote($key ,$noteTitle, $noteValue){
+		$link = mysqli_connect("localhost", "cl52-adminbaz", "S63Gafa1fa", "cl52-adminbaz");
+		$query = "INSERT INTO `notes`(`noteID`, `parentKey`, `noteType`, `noteTitle`, `noteValue`)
+				VALUES(NULL, '$key', 's', '$noteTitle', '$noteValue');";
+		$result = mysqli_query($link, $query);
+	}
 	
 	
 	

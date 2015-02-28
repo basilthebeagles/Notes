@@ -77,11 +77,11 @@ while(count($noteData)>= $id){
  		
  		echo "<td id='noteValue'>";
 		echo $noteData[$i][4];
-		echo "<form id='edit' method='get'><input type='submit' value='Edit' name=''/>
+		echo "<form id='edit' method='post'action='http://www.csgofiat.com/edit.php'><input type='submit' value='Edit' name=''/>
 			<input type='hidden' value='";
 		echo 	$noteData[$i][0];
 		echo	"' name='edit'/></form>";
-		echo "<form id='delete'method='get'><input type='submit' value='Delete' name=''/><input type='hidden' value='";
+		echo "<form id='delete'method='post'><input type='submit' value='Delete' name=''/><input type='hidden' value='";
 		echo 	$noteData[$i][0];
 		echo "' name='delete'/></form>";
 			

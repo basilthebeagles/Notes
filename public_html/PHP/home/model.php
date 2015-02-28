@@ -3,6 +3,7 @@
 Class homeModel{
 	
 	function getNoteData($key){
+		
 		$noteData = array();
 		$row = array();
 		echo $key;
